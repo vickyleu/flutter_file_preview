@@ -16,6 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"文件预览";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(close)];
     self.myWebView = [[UIWebView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.myWebView.scalesPageToFit = YES;//使文档的显示范围适合UIWebView的bounds
     [self.view addSubview:self.myWebView];
@@ -25,6 +26,10 @@
     NSURL *filePath = [NSURL URLWithString:self.url];
     NSURLRequest *request = [NSURLRequest requestWithURL: filePath];
     [self.myWebView loadRequest:request];
+}
+
+- (void)close {
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
