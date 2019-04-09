@@ -8,5 +8,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FilePreviewVC : UIViewController
-
+@property (nonatomic, copy) NSString *url;
 @end

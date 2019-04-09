@@ -8,29 +8,28 @@
 #import "FilePreviewVC.h"
 
 @interface FilePreviewVC ()
-
+@property (nonatomic, strong) UIWebView *myWebView;
 @end
 
 @implementation FilePreviewVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"文件预览";
+    self.myWebView = [[UIWebView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.myWebView.scalesPageToFit = YES;//使文档的显示范围适合UIWebView的bounds
+    [self.view addSubview:self.myWebView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSURL *filePath = [NSURL URLWithString:self.url];
+    NSURLRequest *request = [NSURLRequest requestWithURL: filePath];
+    [self.myWebView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

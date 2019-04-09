@@ -14,6 +14,16 @@ PDF, Word, Excel, and PowerPoint Viewer For Flutter App
 
 ## 使用方法
 
+pubspec.yaml中添加
+
+```
+file_preview:
+    git:
+        url: git://github.com/aliyoge/flutter_file_preview.git
+```
+
+在文件中使用
+
 ```
 import 'package:file_preview/file_preview.dart';
 
