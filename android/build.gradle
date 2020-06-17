@@ -30,8 +30,8 @@ android {
         minSdkVersion 16
         //X5兼容64位手机
         ndk {
-//            abiFilters "armeabi" //, "armeabi-v7a", "x86", "mips"
-            abiFilters "armeabi-v7a" //, "armeabi-v7a", "x86", "mips"
+            abiFilters "armeabi" //, "armeabi-v7a", "x86", "mips"
+//            abiFilters "armeabi-v7a" //, "armeabi-v7a", "x86", "mips"
         }
     }
     buildTypes {
