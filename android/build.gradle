@@ -1,3 +1,5 @@
+package android
+
 group 'zzaning.com.filepreview'
 version '1.0-SNAPSHOT'
 
@@ -9,7 +11,7 @@ buildscript {
 
     dependencies {
         // classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.6.3'
     }
 }
 
@@ -28,8 +30,6 @@ android {
     defaultConfig {
         targetSdkVersion 28
         minSdkVersion 16
-        // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //X5兼容64位手机
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
@@ -49,32 +49,15 @@ android {
         disable 'InvalidPackage'
     }
     dependencies {
-        androidTestImplementation 'androidx.test:runner:1.1.1'
-        androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-        androidTestImplementation 'junit:junit:4.12'
-        implementation 'androidx.appcompat:appcompat:1.0.2'
-        implementation 'androidx.annotation:annotation:1.0.2'
+        implementation 'androidx.appcompat:appcompat:1.1.0'
+        implementation 'androidx.annotation:annotation:1.1.0'
         implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1315_43612_sharewithdownload_withoutGame_obfs_20180718_102847.jar')
         implementation 'pub.devrel:easypermissions:1.2.0'
-        implementation 'com.squareup.okio:okio:1.13.0'
-        implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-        implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-        implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+        implementation 'com.squareup.okio:okio:2.2.2'
+        implementation 'com.squareup.okhttp3:okhttp:4.1.0'
+        implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+        implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
         compileOnly files('libs/flutter.jar')
-
-        // implementation fileTree(include: ['*.jar'], dir: 'libs')
-        // androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        //     exclude group: 'com.android.support', module: 'support-annotations'
-        // })
-        // testImplementation 'junit:junit:4.12'
-        // implementation 'com.android.support:appcompat-v7:27.1.1'
-        // implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1315_43612_sharewithdownload_withoutGame_obfs_20180718_102847.jar')
-        // implementation 'pub.devrel:easypermissions:1.2.0'
-        // implementation 'com.squareup.okio:okio:1.13.0'
-        // implementation 'com.squareup.okhttp3:okhttp:3.7.0'
-        // implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-        // implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
-        // compileOnly files('libs/flutter.jar')
     }
 }
 
