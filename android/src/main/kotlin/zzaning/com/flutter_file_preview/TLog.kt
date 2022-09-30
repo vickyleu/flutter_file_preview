@@ -23,7 +23,7 @@ object TLog {
     }
 
     fun d(log: String?) {
-        if (DEBUG && !TextUtils.isEmpty(log)) Log.d(LOG_TAG, log)
+        if (DEBUG && !TextUtils.isEmpty(log)) Log.d(LOG_TAG, log!!)
     }
 
     fun e(tag: String?, log: String?) {
