@@ -1,4 +1,4 @@
-# file_preview
+# flutter_file_preview
 
 PDF, Word, Excel, and PowerPoint Viewer For Flutter App
 
@@ -17,7 +17,7 @@ PDF, Word, Excel, and PowerPoint Viewer For Flutter App
 pubspec.yaml中添加
 
 ```
-file_preview:
+flutter_file_preview:
     git:
         url: git://github.com/aliyoge/flutter_file_preview.git
 ```
@@ -25,7 +25,7 @@ file_preview:
 在文件中使用
 
 ```
-import 'package:file_preview/file_preview.dart';
+import 'package:flutter_file_preview/flutter_file_preview.dart';
 
 # 预览在线文件
 FilePreview.openFile("http://www.xxx.com/files/xxx.docx");

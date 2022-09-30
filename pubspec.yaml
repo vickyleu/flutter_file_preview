@@ -1,11 +1,11 @@
-name: file_preview
+name: flutter_file_preview
 description: PDF, Word, Excel, and PowerPoint Viewer For Flutter App.
 version: 0.0.1
 author: wenjunhuang<kongkonghwj@gmail.com>
 homepage: https://github.com/aliyoge/flutter_file_preview
 
 environment:
-  sdk: ">=2.0.0-dev.28.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -13,5 +13,15 @@ dependencies:
 
 flutter:
   plugin:
-    androidPackage: zzaning.com.filepreview
-    pluginClass: FilePreviewPlugin
+    platforms:
+      android:
+        package: zzaning.com.flutter_file_preview
+        pluginClass: FlutterFilePreviewPlugin
+      ios:
+        pluginClass: FlutterFilePreviewPlugin
+
+#      web:
+#        pluginClass: FilePreviewPlugin
+#        fileName: xxxx_web.dart
+#      linux:
+#        pluginClass: FilePreviewPlugin

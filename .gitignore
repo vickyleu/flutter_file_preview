@@ -9,8 +9,8 @@ build/
 
 .idea
 
-file_preview.iml
-file_preview_android.iml
+flutter_file_preview.iml
+flutter_file_preview_android.iml
 
 ## android 
 # Built application files

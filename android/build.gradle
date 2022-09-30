@@ -1,38 +1,45 @@
-group 'zzaning.com.filepreview'
+group 'zzaning.com.flutter_file_preview'
 version '1.0-SNAPSHOT'
 
 buildscript {
+    ext.kotlin_version = '1.7.10'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
-
     dependencies {
-        // classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath 'com.android.tools.build:gradle:3.6.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        maven {
+            url 'http://download.flutter.io'
+            allowInsecureProtocol true
+        }
+        mavenCentral()
     }
 }
 
 apply plugin: 'com.android.library'
-
+apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 28
 
     defaultConfig {
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 28
-        minSdkVersion 16
-        //X5兼容64位手机
-        ndk {
-            abiFilters "armeabi","armeabi-v7a"//, , "x86", "mips"
-//            abiFilters "armeabi-v7a" //, "armeabi-v7a", "x86", "mips"
-        }
+        minSdkVersion 20
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
     buildTypes {
         release {
@@ -48,15 +55,9 @@ android {
         disable 'InvalidPackage'
     }
     dependencies {
-        implementation 'androidx.appcompat:appcompat:1.1.0'
-        implementation 'androidx.annotation:annotation:1.1.0'
-        implementation files('libs/tbs_sdk_thirdapp_v4.3.0.3_43903_sharewithdownloadwithfile_withoutGame_obfs_20200402_121309.jar')
-        implementation 'pub.devrel:easypermissions:1.2.0'
-        implementation 'com.squareup.okio:okio:2.2.2'
-        implementation 'com.squareup.okhttp3:okhttp:4.1.0'
-        implementation 'com.squareup.retrofit2:retrofit:2.6.1'
-        implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
-        compileOnly files('libs/flutter.jar')
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation 'com.tencent.tbs:tbssdk:44226'
+        compileOnly "io.flutter:flutter_embedding_debug:1.0.0-e85ea0e79c6d894c120cda4ee8ee10fe6745e187"
     }
 }
 
