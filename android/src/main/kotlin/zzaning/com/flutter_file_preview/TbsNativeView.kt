@@ -7,13 +7,13 @@ import android.widget.FrameLayout
 import io.flutter.plugin.platform.PlatformView
 import java.io.File
 
-class TbsNativeView(context: Context?, val id: Int, creationParams: Map<String, *>?) :
+class TbsNativeView(context: Context, val id: Int, creationParams: Map<String, *>?) :
     PlatformView {
     var mFrameLayout: FrameLayout? = null
     var mSuperFileView: SuperFileView? = null
 
     init {
-        if (creationParams != null && context != null) {
+        if (creationParams != null) {
             val filePath = (creationParams["filePath"] as? String)
             if (filePath != null) {
                 mFrameLayout = FrameLayout(context).apply {

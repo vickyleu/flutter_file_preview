@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.os.Environment
 import android.text.TextUtils
 import android.util.AttributeSet
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import com.tencent.smtt.sdk.QbSdk
 import com.tencent.smtt.sdk.TbsReaderView
 import java.io.File
 
@@ -30,7 +32,7 @@ class SuperFileView(
     }
 
     fun displayFile(mFile: File?) {
-        if (mFile != null && !TextUtils.isEmpty(mFile.toString())) {
+        if (mFile != null && !TextUtils.isEmpty(mFile.path)) {
             //增加下面一句解决没有TbsReaderTemp文件夹存在导致加载文件失败
             val bsReaderTemp = "/storage/emulated/0/TbsReaderTemp"
             val bsReaderTempFile = File(bsReaderTemp)
@@ -44,16 +46,15 @@ class SuperFileView(
 
             //加载文件
             val localBundle = Bundle()
-            TLog.d(mFile.toString())
-            localBundle.putString("filePath", mFile.toString())
-            localBundle.putString(
-                "tempPath",
-                Environment.getExternalStorageDirectory().toString() + "/" + "TbsReaderTemp"
-            )
+            TLog.d(mFile.path)
+            localBundle.putString("filePath", mFile.path)
+            localBundle.putString("tempPath","/storage/emulated/0/TbsReaderTemp")
             if (mTbsReaderView == null) mTbsReaderView = getTbsReaderView(context)
-            val bool = mTbsReaderView!!.preOpen(getFileType(mFile.toString()), false)
+            val bool = mTbsReaderView!!.preOpen(getFileType(mFile.path), false)
             if (bool) {
                 mTbsReaderView!!.openFile(localBundle)
+            }else{
+                QbSdk.clearAllWebViewCache(context.applicationContext,true)
             }
         } else {
             TLog.e("文件路径无效！")
@@ -110,6 +111,7 @@ class SuperFileView(
 
     init {
         mTbsReaderView = TbsReaderView(context, this)
+        mTbsReaderView?.setLayerType(View.LAYER_TYPE_HARDWARE,null)
         this.addView(mTbsReaderView, LinearLayout.LayoutParams(-1, -1))
     }
 }
